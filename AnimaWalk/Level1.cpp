@@ -6,7 +6,7 @@
 
 void Level1::Init()
 {
-    backg = new Sprite("Resources/Background.jpg");
+    backg = new Sprite("Resources/Area01.png");
     player = new Player();
 }
 

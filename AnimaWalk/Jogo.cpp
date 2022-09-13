@@ -9,7 +9,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 
     // configura a engine
     engine->window->Mode(WINDOWED);
-    engine->window->Size(960, 540);
+    engine->window->Size(1110, 720);
     engine->window->Color(0, 0, 0);
     engine->window->Title("Jogo");
     engine->window->Icon(IDI_ICON);
