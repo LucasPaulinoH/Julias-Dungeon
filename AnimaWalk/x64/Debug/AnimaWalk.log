@@ -1,0 +1,20 @@
+﻿  compilation object save succeeded; see C:\Users\lucas\Downloads\Lab13\Lab13\AnimaWalk\AnimaWalk\Shaders\Pixel.cso
+  compilation object save succeeded; see C:\Users\lucas\Downloads\Lab13\Lab13\AnimaWalk\AnimaWalk\Shaders\Vertex.cso
+  Animation.cpp
+  AnimaWalk.cpp
+  Engine.cpp
+  Game.cpp
+  Geometry.cpp
+  Graphics.cpp
+  Image.cpp
+  Lady.cpp
+  Object.cpp
+  Renderer.cpp
+  Scene.cpp
+  Sprite.cpp
+  Texture.cpp
+  TileSet.cpp
+  Timer.cpp
+  Window.cpp
+  Gerando Código...
+  AnimaWalk.vcxproj -> C:\Users\lucas\Downloads\Lab13\Lab13\AnimaWalk\x64\Debug\AnimaWalk.exe
