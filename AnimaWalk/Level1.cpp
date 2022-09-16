@@ -6,8 +6,13 @@
 
 void Level1::Init()
 {
+
+    scene = new Scene();
+
     backg = new Sprite("Resources/Area01.png");
-    player = new Player();
+   
+    Player * player = new Player();
+    scene->Add(player, MOVING);
 }
 
 // ------------------------------------------------------------------------------
@@ -19,7 +24,8 @@ void Level1::Update()
         window->Close();
 
     // atualiza objeto
-    player->Update();
+    scene->Update();
+    scene->CollisionDetection();
 }
 
 // ------------------------------------------------------------------------------
@@ -27,19 +33,13 @@ void Level1::Update()
 void Level1::Draw()
 {
     backg->Draw(window->CenterX(), window->CenterY(), Layer::BACK);
-    player->Draw();
+    scene->Draw();
 }
 
 // ------------------------------------------------------------------------------
 
 void Level1::Finalize()
 {
-    delete player;
+    delete scene;
     delete backg;
 }
-
-
-// ------------------------------------------------------------------------------
-//                                  WinMain                                      
-// ------------------------------------------------------------------------------
-

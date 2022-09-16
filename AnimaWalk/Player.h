@@ -1,41 +1,49 @@
-#ifndef _ANIMAWALK_LADY_H_
-#define _ANIMAWALK_LADY_H_
-
 #include "Types.h"                      // tipos específicos da engine
 #include "Object.h"                     // interface de Object
 #include "Animation.h"                  // animação de sprites
 
 // ------------------------------------------------------------------------------
 
-enum PlayerState { STILL, WALKUP, WALKDOWN, WALKLEFT, WALKRIGHT };
+enum PLAYERSTATE { STOPPED, UP, DOWN, LEFT, RIGHT };
 
 // ---------------------------------------------------------------------------------
 
 class Player : public Object
 {
 private:
-    TileSet* walking;                // folha de sprites do personagem
-    Animation* anim;                   // animação do personagem
-    float       speed;                  // velocidade do personagem
+    TileSet* tilesetU = nullptr;             
+    Animation* animU = nullptr;
+
+    TileSet* tilesetD = nullptr;             
+    Animation* animD = nullptr;
+
+    TileSet* tilesetL = nullptr;             
+    Animation* animL = nullptr;
+
+    TileSet* tilesetR = nullptr;             
+    Animation* animR = nullptr;
+
+    float velX = 0;
+    float velY = 0;
 
 public:
-    uint state;                         // estado atual do personagem
+    uint currState = STOPPED;
+    uint nextState = STOPPED;
 
-    Player();                             // construtor
-    ~Player();                            // destrutor
+    Player();
+    ~Player();
 
-    void Update();                      // atualização do objeto
-    void Draw();                        // desenho do objeto
+    void Stop();
+    void Up();
+    void Down();
+    void Left();
+    void Right();
+
+    void OnCollision(Object* obj);
+    void PivotCollision(Object* obj);
+
+    void Update();
+    void Draw();
 };
 
 // ---------------------------------------------------------------------------------
-// Função Membro Inline
-
-inline void Player::Draw()
-{
-    anim->Draw(x, y, z);
-}
-
-// ---------------------------------------------------------------------------------
-
-#endif

@@ -1,4 +1,4 @@
-enum PacManObjects
+enum JogoObjects
 {
     PLAYER,
     PIVOT

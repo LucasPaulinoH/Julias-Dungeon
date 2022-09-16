@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\arthu\Documents\MazeGame\Projeto-Jogos\x64\Debug\Projeto-Jogo.exe</FullPath>
+      <FullPath>C:\Users\Cliente\OneDrive\Área de Trabalho\Julia's Dungeon\Projeto-Jogos\x64\Debug\Projeto-Jogo.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\arthu\Documents\MazeGame\Projeto-Jogos\AnimaWalk\Shaders\Pixel.cso</FullPath>
+      <FullPath>C:\Users\Cliente\OneDrive\Área de Trabalho\Julia's Dungeon\Projeto-Jogos\AnimaWalk\Shaders\Pixel.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\arthu\Documents\MazeGame\Projeto-Jogos\AnimaWalk\Shaders\Vertex.cso</FullPath>
+      <FullPath>C:\Users\Cliente\OneDrive\Área de Trabalho\Julia's Dungeon\Projeto-Jogos\AnimaWalk\Shaders\Vertex.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
