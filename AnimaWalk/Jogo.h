@@ -1,5 +1,0 @@
-enum JogoObjects
-{
-    PLAYER,
-    PIVOT
-};
