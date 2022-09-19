@@ -17,32 +17,23 @@
 
 Player::Player()
 {
-    
-    //uint seqStopped[1] = { 1 };
-    uint seq[3] = { 0, 1,2 };
+    tileset = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
+    anim = new Animation(tileset, 0.120f, true);
 
-    tilesetU = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
-    animU = new Animation(tilesetU, 0.150f, true);
-    
-    animU->Add(UP, seq, 3);
+    uint seqLeft[3] = {6,7,8};
+    uint seqRight[3] = {9,10,11};
+    uint seqUp[3] = {0,1,2};
+    uint seqDown[3] = {3,4,5};
+    uint stopped[1] = { 4 };
 
-    tilesetD = new TileSet("Resources/playerDown.png", 45, 48, 3, 3);
-    animD = new Animation(tilesetD, 0.150f, true);
-   // animD->Add(DOWN, seq, 3);
-    //animD->Add(STOPPED, seqStopped, 1);
-
-    tilesetL = new TileSet("Resources/playerLeft.png", 45, 48, 3, 3);
-    animL = new Animation(tilesetL, 0.150f, true);
-   // animL->Add(LEFT, seq, 3);
-
-    tilesetR = new TileSet("Resources/playerRight.png", 45, 48, 3, 3);
-    animR = new Animation(tilesetR, 0.150f, true);
-   // animR->Add(RIGHT, seq, 3);
+    anim->Add(LEFT, seqLeft, 3);
+    anim->Add(RIGHT, seqRight, 3);
+    anim->Add(UP, seqUp, 3);
+    anim->Add(DOWN, seqDown, 3);
+    anim->Add(STOPPED, stopped, 1);
     
 
-    // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
-    currState = STOPPED;
-    BBox(new Rect(-20, -20, 20, 20));
+    BBox(new Rect(-20, -25, 20, 20));
     MoveTo(510.0f, 668.0f);
     type = PLAYER;
 }
@@ -51,17 +42,8 @@ Player::Player()
 
 Player::~Player()
 {
-    delete tilesetU;
-    delete animU;
-
-    delete tilesetD;
-    delete animD;
-
-    delete tilesetL;
-    delete animL;
-
-    delete tilesetR;
-    delete animR;
+    delete tileset;
+    delete anim;
 }
 
 // ---------------------------------------------------------------------------------
@@ -76,6 +58,7 @@ void Player::Stop()
 
 void Player::Up()
 {
+    anim->Select(UP);
     velX = 0;
     velY = -200.0f;
 }
@@ -84,6 +67,7 @@ void Player::Up()
 
 void Player::Down()
 {
+    anim->Select(DOWN);
     velX = 0;
     velY = 200.0f;
 }
@@ -92,6 +76,7 @@ void Player::Down()
 
 void Player::Left()
 {
+    anim->Select(LEFT);
     velX = -200.0f;
     velY = 0;
 }
@@ -100,6 +85,7 @@ void Player::Left()
 
 void Player::Right()
 {
+    anim->Select(RIGHT);
     velX = 200.0f;
     velY = 0;
 }
@@ -124,7 +110,7 @@ void Player::PivotCollision(Object * obj)
         // -----------------------
         // CurrentState == STOPPED
         // -----------------------
-
+        anim->Select(currState);
         switch (nextState)
         {
         case LEFT:
@@ -163,7 +149,6 @@ void Player::PivotCollision(Object * obj)
         // -----------------------
         // CurrentState == LEFT
         // -----------------------
-
         if (x < p->X())
         {
             if (!p->left)
@@ -221,7 +206,6 @@ void Player::PivotCollision(Object * obj)
         // -----------------------
         // CurrentState == RIGHT
         // -----------------------
-
         if (x > p->X())
         {
             if (!p->right)
@@ -279,7 +263,6 @@ void Player::PivotCollision(Object * obj)
         // -----------------------
         // CurrentState == UP
         // -----------------------
-
         if (y < p->Y())
         {
             if (!p->up)
@@ -395,6 +378,8 @@ void Player::PivotCollision(Object * obj)
 
 void Player::Update()
 {
+    anim->NextFrame();
+
     if (window->KeyDown(VK_LEFT))
     {
         nextState = LEFT;
@@ -438,17 +423,6 @@ void Player::Update()
             Down();
         }
     }
-    //animU->Select(currState);
-    animU->NextFrame();
-
-    //animD->Select(currState);
-    animD->NextFrame();
-
-   // animL->Select(currState);
-    animL->NextFrame();
-
-    //animR->Select(currState);
-    animR->NextFrame();
 
     // atualiza posição
     Translate(velX * gameTime, velY * gameTime);
@@ -465,28 +439,6 @@ void Player::Update()
 
     if (Y()-20 > window->Height())
         MoveTo(x, -20.0f);
-}
-
-// ---------------------------------------------------------------------------------
-
-void Player::Draw()
-{ 
-    switch(currState)
-    {
-    case LEFT:  animL->Draw(x, y, Layer::UPPER); break;
-    case RIGHT: animR->Draw(x, y, Layer::UPPER); break;
-    case UP:    animU->Draw(x, y, Layer::UPPER); break;
-    case DOWN:  animD->Draw(x, y, Layer::UPPER); break;
-    default: 
-        switch(nextState)
-        {
-        case LEFT: animL->Draw(x, y, Layer::UPPER); break;
-        case RIGHT: animR->Draw(x, y, Layer::UPPER); break;
-        case UP:    animU->Draw(x, y, Layer::UPPER); break;
-        case DOWN:  animD->Draw(x, y, Layer::UPPER); break;
-        default:    animL->Draw(x, y, Layer::UPPER);
-        }
-    }
 }
 
 // ---------------------------------------------------------------------------------

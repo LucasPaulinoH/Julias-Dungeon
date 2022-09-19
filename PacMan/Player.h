@@ -31,17 +31,9 @@ class Player : public Object
 {
 private:
 
-    TileSet* tilesetU = nullptr;
-    Animation* animU = nullptr;
+    TileSet* tileset = nullptr;
+    Animation* anim = nullptr;
 
-    TileSet* tilesetD = nullptr;
-    Animation* animD = nullptr;
-
-    TileSet* tilesetL = nullptr;
-    Animation* animL = nullptr;
-
-    TileSet* tilesetR = nullptr;
-    Animation* animR = nullptr;
     float velX = 0;                     // velocidade horizontal do player
     float velY = 0;                     // velocidade vertical do player
 
@@ -67,4 +59,9 @@ public:
 
 // ---------------------------------------------------------------------------------
 
+
+inline void Player::Draw()
+{
+    anim->Draw(x, y, z);
+}
 #endif
