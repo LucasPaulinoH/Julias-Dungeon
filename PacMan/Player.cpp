@@ -34,7 +34,7 @@ Player::Player()
     
 
     BBox(new Rect(-20, -25, 20, 20));
-    MoveTo(510.0f, 668.0f);
+    MoveTo(550.0f, 660.0f);
     type = PLAYER;
 }
 
