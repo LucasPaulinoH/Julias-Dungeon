@@ -30,6 +30,7 @@ enum PLAYERSTATE {STOPPED, UP, DOWN, LEFT, RIGHT};
 class Player : public Object
 {
 private:
+
     TileSet* tilesetU = nullptr;
     Animation* animU = nullptr;
 

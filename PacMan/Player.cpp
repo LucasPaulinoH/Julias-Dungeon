@@ -17,30 +17,33 @@
 
 Player::Player()
 {
-    uint seq[3] = { 0,1,2 };
+    
     //uint seqStopped[1] = { 1 };
+    uint seq[3] = { 0, 1,2 };
 
-    tilesetU = new TileSet("Resources/playerUp.png", 45, 48, 3, 3);
+    tilesetU = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
     animU = new Animation(tilesetU, 0.150f, true);
+    
     animU->Add(UP, seq, 3);
 
     tilesetD = new TileSet("Resources/playerDown.png", 45, 48, 3, 3);
     animD = new Animation(tilesetD, 0.150f, true);
-    animD->Add(DOWN, seq, 3);
+   // animD->Add(DOWN, seq, 3);
     //animD->Add(STOPPED, seqStopped, 1);
 
     tilesetL = new TileSet("Resources/playerLeft.png", 45, 48, 3, 3);
     animL = new Animation(tilesetL, 0.150f, true);
-    animL->Add(LEFT, seq, 3);
+   // animL->Add(LEFT, seq, 3);
 
     tilesetR = new TileSet("Resources/playerRight.png", 45, 48, 3, 3);
     animR = new Animation(tilesetR, 0.150f, true);
-    animR->Add(RIGHT, seq, 3);
+   // animR->Add(RIGHT, seq, 3);
+    
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
     currState = STOPPED;
     BBox(new Rect(-20, -20, 20, 20));
-    MoveTo(480.0f, 450.0f);
+    MoveTo(510.0f, 668.0f);
     type = PLAYER;
 }
 
@@ -435,6 +438,17 @@ void Player::Update()
             Down();
         }
     }
+    //animU->Select(currState);
+    animU->NextFrame();
+
+    //animD->Select(currState);
+    animD->NextFrame();
+
+   // animL->Select(currState);
+    animL->NextFrame();
+
+    //animR->Select(currState);
+    animR->NextFrame();
 
     // atualiza posição
     Translate(velX * gameTime, velY * gameTime);

@@ -25,6 +25,7 @@ class Level1 : public Game
 {
 private:
     Sprite * backg = nullptr;       // background
+    Sprite* walls = nullptr;        // Walls
     Scene  * scene = nullptr;       // gerenciador de cena
 
     bool viewBBox = false;          // habilita visualização da bounding box

@@ -27,7 +27,8 @@ void Level1::Init()
     scene = new Scene();
 
     // cria background
-    backg = new Sprite("Resources/Area01.png");
+    backg = new Sprite("Resources/Area01Back.png");
+    walls = new Sprite("Resources/Area01Walls.png");
 
     // cria jogador
     Player * player = new Player();
@@ -69,6 +70,7 @@ void Level1::Init()
 void Level1::Finalize()
 {
     delete backg;
+    delete walls;
     delete scene;
 }
 
@@ -106,6 +108,7 @@ void Level1::Draw()
 {
     // desenha cena
     backg->Draw(float(window->CenterX()), float(window->CenterY()), Layer::BACK);
+    walls->Draw(float(window->CenterX()), float(window->CenterY()), Layer::FRONT);
     scene->Draw();
 
     // desenha bounding box dos objetos
