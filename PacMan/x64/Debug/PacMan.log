@@ -1,3 +1,7 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: O diretório intermediário (x64\Debug\) contém arquivos compartilhados de outro projeto (PacMan.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
-  Player.cpp
+  Home.cpp
+  Jdungeon.cpp
+  Level1.cpp
+  Level2.cpp
+  Gerando Código...
   PacMan.vcxproj -> C:\Users\lucas\OneDrive\Área de Trabalho\Projeto-Jogos\x64\Debug\JuliasDungeon.exe

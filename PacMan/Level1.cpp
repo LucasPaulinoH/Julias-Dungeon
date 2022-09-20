@@ -11,6 +11,7 @@
 
 #include "Engine.h"
 #include "Home.h"
+#include "Level2.h"
 #include "Level1.h"
 #include "Player.h"
 #include "Pivot.h"
@@ -27,8 +28,7 @@ void Level1::Init()
     scene = new Scene();
 
     // cria background
-    backg = new Sprite("Resources/Area01(atualizada).png");
-    //walls = new Sprite("Resources/Area01Walls.png");
+    backg = new Sprite("Resources/level1.png");
 
     // cria jogador
     Player * player = new Player();
@@ -70,7 +70,6 @@ void Level1::Init()
 void Level1::Finalize()
 {
     delete backg;
-    //delete walls;
     delete scene;
 }
 
@@ -93,6 +92,10 @@ void Level1::Update()
     {
         // volta para a tela de abertura
         Engine::Next<Home>();
+    }
+    if (window->KeyDown(VK_SHIFT))
+    {
+        Engine::Next<Level2>();
     }
     else
     {
