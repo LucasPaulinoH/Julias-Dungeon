@@ -20,6 +20,7 @@
 #include <fstream>
 #include "GameOver.h"
 #include "Chest.h"
+#include "Key.h"
 using std::ifstream;
 using std::string;
 
@@ -36,12 +37,20 @@ void Level1::Init()
     // cria jogador
     Player * player = new Player();
     scene->Add(player, MOVING);
-
+    player->setScene(scene);
     // cria armadilhas
 
     Trap* trap = new Trap();
     trap->MoveTo(150, 388);
     scene->Add(trap, STATIC);
+
+    Key* key = new Key();
+    key->MoveTo(150, 138);
+    scene->Add(key, STATIC);
+
+    Key * key1 = new Key();
+    key1->MoveTo(940, 320);
+    scene->Add(key1, STATIC);
 
     // cria pontos de mudança de direção
     Pivot * pivot;
@@ -120,6 +129,8 @@ void Level1::Finalize()
 
 void Level1::Update()
 {
+    
+    
     // habilita/desabilita bounding box
     if (ctrlKeyB && window->KeyDown('B'))
     {
@@ -139,10 +150,6 @@ void Level1::Update()
     if (window->KeyDown(VK_SHIFT))
     {
         Engine::Next<Level2>();
-    }
-    if (window->KeyDown('G'))
-    {
-        Engine::Next<GameOver>();
     }
     else
     {

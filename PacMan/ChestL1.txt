@@ -6,6 +6,5 @@
 // Informações de posição da comida
 // posX posY
 
-48 100
-60 100
-130 100
+145 65
+930 585

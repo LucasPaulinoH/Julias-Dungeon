@@ -5,3 +5,5 @@
 //
 // Informações de posição da comida
 // posX posY
+790 140
+123 452

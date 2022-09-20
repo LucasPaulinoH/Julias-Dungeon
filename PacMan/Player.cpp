@@ -16,8 +16,11 @@
 #include "Engine.h"
 #include "GameOver.h"
 #include "Chest.h"
+#include "Key.h"
+#include "Level2.h"
 
 // ---------------------------------------------------------------------------------
+Scene* Player::scene = nullptr;
 
 Player::Player()
 {
@@ -42,6 +45,28 @@ Player::Player()
     type = PLAYER;
 }
 
+Player::Player(Scene * sc)
+{
+    tileset = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
+    anim = new Animation(tileset, 0.120f, true);
+
+    uint seqLeft[3] = { 6,7,8 };
+    uint seqRight[3] = { 9,10,11 };
+    uint seqUp[3] = { 0,1,2 };
+    uint seqDown[3] = { 3,4,5 };
+    uint stopped[1] = { 4 };
+
+    anim->Add(LEFT, seqLeft, 3);
+    anim->Add(RIGHT, seqRight, 3);
+    anim->Add(UP, seqUp, 3);
+    anim->Add(DOWN, seqDown, 3);
+    anim->Add(STOPPED, stopped, 1);
+
+
+    BBox(new Rect(-20, -25, 20, 20));
+    MoveTo(550.0f, 660.0f);
+    type = PLAYER;
+}
 // ---------------------------------------------------------------------------------
 
 Player::~Player()
@@ -117,16 +142,30 @@ void Player::TrapCollision(Object* obj) {
 }
 
 void Player::KeyCollision(Object* obj) {
+    Key* key = (Key*)obj;
 
-
+    if (key->getCollected() == 1) {
+        key->SetCollected(0);
+        Engine::Next<Level2>();
+    }
+    else {
+        key->SetCollected(key->getCollected() + 1);
+    }
+    
+    scene->Delete(key, STATIC);
 }
 
 void Player::ChestCollision(Object* obj) {
-    Chest* chest = (Chest*)obj;
-    chest->SetCollected(1); // Inicia a animacao ao ser coletado
+    Chest* coin = (Chest*)obj;
+    coin->SetCollected(1); // Inicia a animacao ao ser coletado
 
-    // Fingir que foi destruido? kkkk
+    scene->Delete(coin, STATIC);
+
     //obj->MoveTo(1300, 0);
+}
+
+void Player::setScene(Scene* sc) {
+    scene = sc;
 }
 
 void Player::PivotCollision(Object * obj)
@@ -469,5 +508,11 @@ void Player::Update()
     if (Y()-20 > window->Height())
         MoveTo(x, -20.0f);
 }
+/*
+
+void setScene(Scene* sc) {
+    scene = sc;
+}
+*/
 
 // ---------------------------------------------------------------------------------

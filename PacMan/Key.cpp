@@ -1,26 +1,30 @@
 
-#include "Chest.h"
+#include "Key.h"
 
 // ---------------------------------------------------------------------------------
 
-Chest::Chest(){
+Key::Key() {
 
-	coin = new Sprite("Resources/coin.png");
+	key = new Sprite("Resources/key.png");
 
-	BBox( new Rect(-8, -8, 8, 8));
+	BBox(new Rect(-8, -8, 8, 8));
 	//tipo para verificar na colisao
-	type = CHEST;
+	type = KEY;
 }
 
 // ---------------------------------------------------------------------------------
 
-Chest::~Chest()
+Key::~Key()
 {
-	delete coin;
+	delete key;
 }
 
-void Chest::SetCollected(int value) {
+void Key::SetCollected(int value) {
 	collected = value;
+}
+
+int Key::getCollected() {
+	return collected;
 }
 
 // ---------------------------------------------------------------------------------

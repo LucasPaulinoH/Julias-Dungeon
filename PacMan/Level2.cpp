@@ -17,6 +17,8 @@
 #include "Pivot.h"
 #include <string>
 #include <fstream>
+#include "Key.h"
+#include "Chest.h"
 using std::ifstream;
 using std::string;
 
@@ -33,11 +35,20 @@ void Level2::Init()
     // cria jogador
     Player* player = new Player();
     scene->Add(player, MOVING);
+    player->setScene(scene);
 
     // cria pontos de mudança de direção
     Pivot* pivot;
     bool left, right, up, down;
     float posX, posY;
+
+    Key* key = new Key();
+    key->MoveTo(785, 600);
+    scene->Add(key, STATIC);
+
+    Key* key1 = new Key();
+    key1->MoveTo(384, 666);
+    scene->Add(key1, STATIC);
 
     // cria pivôs a partir do arquivo
     ifstream fin;
@@ -61,6 +72,34 @@ void Level2::Init()
             fin.getline(temp, 80);
         }
         fin >> left;
+    }
+    fin.close();
+
+    Chest* chest;
+
+    float chestPosX, chestPosY;
+    fin.open("ChestL2.txt");
+    fin >> chestPosX;
+    while (!fin.eof())
+    {
+        if (fin.good())
+        {
+            // lê linha de informações do pivô
+            fin >> chestPosY;
+            chest = new Chest();
+
+
+            chest->MoveTo(chestPosX, chestPosY);
+            scene->Add(chest, STATIC);
+        }
+        else
+        {
+            // ignora comentários
+            fin.clear();
+            char temp[80];
+            fin.getline(temp, 80);
+        }
+        fin >> chestPosX;
     }
     fin.close();
 }

@@ -19,7 +19,8 @@
 #include "Object.h"                     // interface de Object
 #include "Animation.h"
 #include "Scene.h"
-
+#include "Key.h"
+#include "Chest.h";
 // ---------------------------------------------------------------------------------
 // Constantes Globais
 
@@ -34,10 +35,10 @@ private:
 
     TileSet* tileset = nullptr;
     Animation* anim = nullptr;
-
     float velX = 0;                     // velocidade horizontal do player
     float velY = 0;                     // velocidade vertical do player
 
+    static Scene* scene;
 
     int itemCount = 0;                  // Contador de coletaveis
 
@@ -46,6 +47,7 @@ public:
     uint nextState = STOPPED;            // próximo estado do jogador
 
     Player();                           // construtor
+    Player(Scene* sc);
     ~Player();                          // destrutor
 
     void Stop();                        // pára jogador
@@ -54,6 +56,8 @@ public:
     void Left();                        // muda direção para esquerda
     void Right();                       // muda direção para direita
 
+
+    void setScene(Scene* sc);
     void OnCollision(Object * obj);
     void TrapCollision(Object* obj);    // resolução da colisão entre armadilhas
     void PivotCollision(Object * obj);  // revolve colisão com pivô

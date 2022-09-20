@@ -1,7 +1,7 @@
 
 
-#ifndef DUNGEON_CHEST_H_
-#define DUNGEON_CHEST_H_
+#ifndef DUNGEON_KEY_H_
+#define DUNGEON_KEY_H_
 
 // ---------------------------------------------------------------------------------
 // Inclusões
@@ -15,14 +15,14 @@
 
 // ---------------------------------------------------------------------------------
 
-class Chest : public Object
+class Key : public Object
 {
 private:
-	Sprite* coin = nullptr;
+	Sprite* key = nullptr;
 
 public:
-	Chest();                   // construtor
-	~Chest();                            // destrutor
+	Key();                   // construtor
+	~Key();                            // destrutor
 
 	int collected = 0;
 
@@ -30,17 +30,18 @@ public:
 	void Draw();                        // desenho do objeto
 
 	void SetCollected(int value);
+	int getCollected();
 };
 
 // ---------------------------------------------------------------------------------
 
-inline void Chest::Draw()
+inline void Key::Draw()
 {
-	coin->Draw(x, y);
+	key->Draw(x, y);
 }
 
-inline void Chest::Update() {
-	
+inline void Key::Update() {
+
 }
 
 
