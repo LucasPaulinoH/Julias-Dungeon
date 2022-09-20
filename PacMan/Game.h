@@ -22,7 +22,7 @@
 #include "Window.h"
 
 // ---------------------------------------------------------------------------------
-
+enum STATECOMAND { HOME, LEVEL1, LEVEL2, GAMEOVER, WIN};
 class Game
 {
     // Membros protegidos são privados para o mundo externo mas
@@ -31,10 +31,14 @@ class Game
 protected:
     static Window* & window;                    // janela do jogo
     static float   & gameTime;                  // tempo do último quadro
+    uint GameState;
 
 public:
     Game();                                     // construtor
     virtual ~Game();                            // destrutor
+
+    uint getGameState();
+    void setGameState(uint);
     
     // Métodos que podem ser sobrescritos para implementar 
     // funcionalidade específica para o jogo. Eles já possuem
@@ -50,6 +54,14 @@ public:
     virtual void Draw() = 0;                    // desenho da cena
     virtual void Finalize() = 0;                // finalização do jogo
 };
+
+inline uint Game::getGameState() {
+    return GameState;
+}
+
+inline void Game::setGameState(uint screenChoice) {
+    GameState = screenChoice;
+}
 
 // ---------------------------------------------------------------------------------
 

@@ -30,6 +30,10 @@ void GameOver::Update()
     {
         ctrlKeyESC = true;
     }
+
+    if (window->KeyDown(VK_RETURN)) {
+        Engine::Next<Level1>();
+    }
 }
 
 // ------------------------------------------------------------------------------

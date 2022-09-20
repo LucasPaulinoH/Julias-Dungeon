@@ -12,6 +12,7 @@ private:
 
     bool viewBBox = false;          // habilita visualização da bounding box
     bool ctrlKeyB = false;          // controle da tecla B
+    bool ctrlKeyG = false;
 
 public:
     void Init();                    // inicializa jogo

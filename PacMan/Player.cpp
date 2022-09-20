@@ -12,6 +12,10 @@
 #include "Jdungeon.h"
 #include "Player.h"
 #include "Pivot.h"
+#include "Trap.h"
+#include "Engine.h"
+#include "GameOver.h"
+#include "Chest.h"
 
 // ---------------------------------------------------------------------------------
 
@@ -96,9 +100,34 @@ void Player::OnCollision(Object * obj)
 {
     if (obj->Type() == PIVOT)
         PivotCollision(obj);
+    if (obj->Type() == TRAP)
+        TrapCollision(obj);
+    if (obj->Type() == CHEST)
+        ChestCollision(obj);
+    if (obj->Type() == KEY)
+        KeyCollision(obj);
+        
 }
 
 // ---------------------------------------------------------------------------------
+
+void Player::TrapCollision(Object* obj) {
+    
+    
+}
+
+void Player::KeyCollision(Object* obj) {
+
+
+}
+
+void Player::ChestCollision(Object* obj) {
+    Chest* chest = (Chest*)obj;
+    chest->SetCollected(1); // Inicia a animacao ao ser coletado
+
+    // Fingir que foi destruido? kkkk
+    //obj->MoveTo(1300, 0);
+}
 
 void Player::PivotCollision(Object * obj)
 {

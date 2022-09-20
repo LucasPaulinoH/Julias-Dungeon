@@ -18,6 +18,7 @@
 #include "Types.h"                      // tipos específicos da engine
 #include "Object.h"                     // interface de Object
 #include "Animation.h"
+#include "Scene.h"
 
 // ---------------------------------------------------------------------------------
 // Constantes Globais
@@ -37,6 +38,9 @@ private:
     float velX = 0;                     // velocidade horizontal do player
     float velY = 0;                     // velocidade vertical do player
 
+
+    int itemCount = 0;                  // Contador de coletaveis
+
 public:
     uint currState = STOPPED;            // estado atual do jogador
     uint nextState = STOPPED;            // próximo estado do jogador
@@ -50,9 +54,12 @@ public:
     void Left();                        // muda direção para esquerda
     void Right();                       // muda direção para direita
 
-    void OnCollision(Object * obj);     // resolução da colisão
+    void OnCollision(Object * obj);
+    void TrapCollision(Object* obj);    // resolução da colisão entre armadilhas
     void PivotCollision(Object * obj);  // revolve colisão com pivô
-    
+    void ChestCollision(Object* obj);
+    void KeyCollision(Object* obj);
+
     void Update();                      // atualização do objeto
     void Draw();                        // desenho do objeto
 };

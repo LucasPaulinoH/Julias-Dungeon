@@ -96,6 +96,9 @@
     <ClCompile Include="Trap.cpp">
       <Filter>Game\Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>Game\Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -170,12 +173,15 @@
     <ClInclude Include="Trap.h">
       <Filter>Game\Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Chest.h">
+      <Filter>Game\Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="FoodL1.txt">
+    <Text Include="ChestL1.txt">
       <Filter>Game\Arquivos de Recurso</Filter>
     </Text>
-    <Text Include="FoodL2.txt">
+    <Text Include="ChestL2.txt">
       <Filter>Game\Arquivos de Recurso</Filter>
     </Text>
     <Text Include="PivotsL1.txt">

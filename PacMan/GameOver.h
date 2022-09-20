@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _PACMAN_GAMEOVER_H_
+#define _PACMAN_GAMEOVER_H_
 
 
 
@@ -21,5 +22,5 @@ public:
 };
 
 // -----------------------------------------------------------------------------
-
+#endif
 

@@ -18,6 +18,8 @@
 #include "Pivot.h"
 #include <string>
 #include <fstream>
+#include "GameOver.h"
+#include "Chest.h"
 using std::ifstream;
 using std::string;
 
@@ -34,6 +36,12 @@ void Level1::Init()
     // cria jogador
     Player * player = new Player();
     scene->Add(player, MOVING);
+
+    // cria armadilhas
+
+    Trap* trap = new Trap();
+    trap->MoveTo(150, 388);
+    scene->Add(trap, STATIC);
 
     // cria pontos de mudança de direção
     Pivot * pivot;
@@ -62,6 +70,37 @@ void Level1::Init()
             fin.getline(temp, 80);
         }
         fin >> left;
+    }
+    fin.close();
+
+    // cria baus a partir do arquivo
+    //ifstream fin;
+
+    Chest* chest;
+
+    float chestPosX, chestPosY;
+    fin.open("ChestL1.txt");
+    fin >> chestPosX;
+    while (!fin.eof())
+    {
+        if (fin.good())
+        {
+            // lê linha de informações do pivô
+            fin >> chestPosY;
+            chest = new Chest();
+            
+            
+            chest->MoveTo(chestPosX, chestPosY);
+            scene->Add(chest, STATIC);
+        }
+        else
+        {
+            // ignora comentários
+            fin.clear();
+            char temp[80];
+            fin.getline(temp, 80);
+        }
+        fin >> chestPosX;
     }
     fin.close();
 
@@ -100,6 +139,10 @@ void Level1::Update()
     if (window->KeyDown(VK_SHIFT))
     {
         Engine::Next<Level2>();
+    }
+    if (window->KeyDown('G'))
+    {
+        Engine::Next<GameOver>();
     }
     else
     {

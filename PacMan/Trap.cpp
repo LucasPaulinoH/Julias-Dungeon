@@ -1,22 +1,15 @@
 #include "Trap.h"
 
-Trap::Trap(float posX, float posY, uint trap_type)
+Trap::Trap()
 {
 	//CRIA SPRITE E BB
-	switch (trap_type) {
-	case PEAKS:
-		tileset = new TileSet("Resources/peaks.png", 16, 16, 4, 4);
+	
+	
+		tileset = new TileSet("Resources/peaksTeste.png", 45, 45, 4, 4);
 		anim = new Animation(tileset, 0.900f, true);
 		BBox(new Rect(-8, -8, 8, 8));
-		MoveTo(posX, posY);
 		type = TRAP;
-		break;
-	case HOLE:
-		break;
-	default:
-		//
-		break;
-	}
+	
 }
 
 // ---------------------------------------------------------------------------------

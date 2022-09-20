@@ -165,6 +165,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -189,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Chest.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOver.h" />
@@ -214,8 +216,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="FoodL1.txt" />
-    <Text Include="FoodL2.txt" />
+    <Text Include="ChestL1.txt" />
+    <Text Include="ChestL2.txt" />
     <Text Include="PivotsL1.txt" />
     <Text Include="PivotsL2.txt" />
   </ItemGroup>
