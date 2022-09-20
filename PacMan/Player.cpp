@@ -24,6 +24,7 @@ Scene* Player::scene = nullptr;
 
 Player::Player()
 {
+    spriteDark = new Sprite("Resources/dark.png");
     tileset = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
     anim = new Animation(tileset, 0.120f, true);
 
@@ -47,6 +48,7 @@ Player::Player()
 
 Player::Player(Scene * sc)
 {
+    //keys = 0;
     tileset = new TileSet("Resources/spriteAnimation.png", 45, 48, 3, 12);
     anim = new Animation(tileset, 0.120f, true);
 
@@ -137,27 +139,27 @@ void Player::OnCollision(Object * obj)
 // ---------------------------------------------------------------------------------
 
 void Player::TrapCollision(Object* obj) {
-    
+    MoveTo(1300, 0);
+    scene->gameover = true;
     
 }
 
 void Player::KeyCollision(Object* obj) {
     Key* key = (Key*)obj;
-
-    if (key->getCollected() == 1) {
+    
+    /* ->SetCollected(key->getCollected() + 1);
+     if (key->getCollected() > 1) {
         key->SetCollected(0);
         Engine::Next<Level2>();
-    }
-    else {
-        key->SetCollected(key->getCollected() + 1);
-    }
-    
+    }*/
+
+    scene->keys++;
     scene->Delete(key, STATIC);
 }
 
 void Player::ChestCollision(Object* obj) {
     Chest* coin = (Chest*)obj;
-    coin->SetCollected(1); // Inicia a animacao ao ser coletado
+    //coin->SetCollected(1); // Inicia a animacao ao ser coletado
 
     scene->Delete(coin, STATIC);
 

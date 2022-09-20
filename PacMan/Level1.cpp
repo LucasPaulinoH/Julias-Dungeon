@@ -25,7 +25,6 @@ using std::ifstream;
 using std::string;
 
 // ------------------------------------------------------------------------------
-
 void Level1::Init()
 {
     // cria gerenciador de cena
@@ -35,11 +34,10 @@ void Level1::Init()
     backg = new Sprite("Resources/level1.png");
 
     // cria jogador
-    Player * player = new Player();
+    Player* player = new Player();
     scene->Add(player, MOVING);
     player->setScene(scene);
     // cria armadilhas
-
     Trap* trap = new Trap();
     trap->MoveTo(150, 388);
     scene->Add(trap, STATIC);
@@ -147,15 +145,25 @@ void Level1::Update()
         // volta para a tela de abertura
         Engine::Next<Home>();
     }
+    
     if (window->KeyDown(VK_SHIFT))
     {
         Engine::Next<Level2>();
     }
+    
+    
     else
     {
         // atualiza cena
         scene->Update();
         scene->CollisionDetection();
+    }
+    if (scene->keys == 2) {
+        Engine::Next<Level2>();
+    }
+
+    if(scene->gameover == true) {
+        Engine::Next<GameOver>();
     }
 }
 

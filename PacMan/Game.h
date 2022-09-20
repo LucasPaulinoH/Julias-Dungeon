@@ -14,10 +14,10 @@
 //
 **********************************************************************************/
 
-#ifndef _PROGJOGOS_GAME_H_
-#define _PROGJOGOS_GAME_H_
 
 // ---------------------------------------------------------------------------------
+#ifndef _PROGJOGOS_GAME_H_
+#define _PROGJOGOS_GAME_H_
 
 #include "Window.h"
 
@@ -62,7 +62,6 @@ inline uint Game::getGameState() {
 inline void Game::setGameState(uint screenChoice) {
     GameState = screenChoice;
 }
-
+#endif
 // ---------------------------------------------------------------------------------
 
-#endif

@@ -20,7 +20,7 @@
 #include "Animation.h"
 #include "Scene.h"
 #include "Key.h"
-#include "Chest.h";
+#include "Chest.h"
 // ---------------------------------------------------------------------------------
 // Constantes Globais
 
@@ -35,16 +35,21 @@ private:
 
     TileSet* tileset = nullptr;
     Animation* anim = nullptr;
+    Sprite* spriteDark = nullptr;
+
     float velX = 0;                     // velocidade horizontal do player
     float velY = 0;                     // velocidade vertical do player
+
 
     static Scene* scene;
 
     int itemCount = 0;                  // Contador de coletaveis
+    
 
 public:
     uint currState = STOPPED;            // estado atual do jogador
     uint nextState = STOPPED;            // próximo estado do jogador
+    //static uint keys;
 
     Player();                           // construtor
     Player(Scene* sc);
@@ -63,7 +68,6 @@ public:
     void PivotCollision(Object * obj);  // revolve colisão com pivô
     void ChestCollision(Object* obj);
     void KeyCollision(Object* obj);
-
     void Update();                      // atualização do objeto
     void Draw();                        // desenho do objeto
 };
@@ -74,5 +78,7 @@ public:
 inline void Player::Draw()
 {
     anim->Draw(x, y, z);
+    spriteDark->Draw(x, y, Layer::FRONT);
 }
 #endif
+

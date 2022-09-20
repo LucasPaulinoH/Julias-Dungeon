@@ -17,6 +17,7 @@
 #include "Pivot.h"
 #include <string>
 #include <fstream>
+#include "GameOver.h"
 #include "Key.h"
 #include "Chest.h"
 using std::ifstream;
@@ -28,7 +29,8 @@ void Level2::Init()
 {
     // cria gerenciador de cena
     scene = new Scene();
-
+    scene->keys = 0;
+    scene->gameover = false;
     // cria background
     backg = new Sprite("Resources/level2.png");
 
@@ -137,6 +139,13 @@ void Level2::Update()
         // atualiza cena
         scene->Update();
         scene->CollisionDetection();
+    }
+
+    if (scene->keys == 2) {
+         //Engine::Next<Level2>();
+    }
+    if (scene->gameover == true) {
+        Engine::Next<GameOver>();
     }
 }
 
