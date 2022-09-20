@@ -139,9 +139,8 @@ void Player::OnCollision(Object * obj)
 // ---------------------------------------------------------------------------------
 
 void Player::TrapCollision(Object* obj) {
-    MoveTo(1300, 0);
+    //MoveTo(1300, 0);
     scene->gameover = true;
-    
 }
 
 void Player::KeyCollision(Object* obj) {

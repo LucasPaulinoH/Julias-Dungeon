@@ -20,6 +20,7 @@
 #include "GameOver.h"
 #include "Key.h"
 #include "Chest.h"
+#include "Win.h"
 using std::ifstream;
 using std::string;
 
@@ -142,11 +143,11 @@ void Level2::Update()
     }
 
     if (scene->keys == 2) {
-         //Engine::Next<Level2>();
+         Engine::Next<Win>();
     }
-    if (scene->gameover == true) {
+    /*if (scene->gameover == true) {
         Engine::Next<GameOver>();
-    }
+    }*/
 }
 
 // ------------------------------------------------------------------------------

@@ -38,9 +38,9 @@ void Level1::Init()
     scene->Add(player, MOVING);
     player->setScene(scene);
     // cria armadilhas
-    Trap* trap = new Trap();
-    trap->MoveTo(150, 388);
-    scene->Add(trap, STATIC);
+    //Trap* trap = new Trap();
+    //trap->MoveTo(150, 388);
+    //scene->Add(trap, STATIC);
 
     Key* key = new Key();
     key->MoveTo(150, 138);
@@ -162,9 +162,9 @@ void Level1::Update()
         Engine::Next<Level2>();
     }
 
-    if(scene->gameover == true) {
+    /*if (scene->gameover == true) {
         Engine::Next<GameOver>();
-    }
+    }*/
 }
 
 // ------------------------------------------------------------------------------
