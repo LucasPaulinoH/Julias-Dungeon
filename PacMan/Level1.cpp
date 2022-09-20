@@ -10,6 +10,7 @@
 **********************************************************************************/
 
 #include "Engine.h"
+#include "Trap.h"
 #include "Home.h"
 #include "Level2.h"
 #include "Level1.h"
@@ -63,6 +64,9 @@ void Level1::Init()
         fin >> left;
     }
     fin.close();
+
+   // Trap* trap1 = new Trap(560.0f, 560.0f, PEAKS);
+   // scene->Add(trap1, STATIC);
 }
 
 // ------------------------------------------------------------------------------
